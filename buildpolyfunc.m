@@ -10,8 +10,15 @@ polystr = '@(x)';
 for n=startingorder:orderincrement:endingorder
     % Build new term
     term = sprintf('x.^%d', n);
-    %TODO: Get rid of beginning '+'
-    polystr = strcat(polystr, '+', term);
+    
+    % Separator
+    if n > startingorder
+        separator = '+';
+    else
+        separator = '';
+    end
+    
+    polystr = strcat(polystr, separator, term);
 end
 
 % Convert string to function handle
