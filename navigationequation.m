@@ -1,4 +1,4 @@
-function F = distanceequation(x)
+function F =navigationequation(x)
 %distanceequation Distance Equation for GPS Problem
 
 % Hardcode Satellite Values
@@ -13,7 +13,5 @@ F = [ (x(1) - xi(1)).^2 + (x(2) - yi(1)).^2 + (x(3) - zi(1)).^2 - (c*(ti(1) - x(
     (x(1) - xi(2)).^2 + (x(2) - yi(2)).^2 + (x(3) - zi(2)).^2 - (c*(ti(2) - x(4))).^2;
     (x(1) - xi(3)).^2 + (x(2) - yi(3)).^2 + (x(3) - zi(3)).^2 - (c*(ti(3) - x(4))).^2;
     (x(1) - xi(4)).^2 + (x(2) - yi(4)).^2 + (x(3) - zi(4)).^2 - (c*(ti(4) - x(4))).^2 ];
-
-
 end
 
