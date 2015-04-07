@@ -1,5 +1,5 @@
-function F =navigationequation(x)
-%distanceequation Distance Equation for GPS Problem
+function F =navigationequation4(x)
+%distanceequation 4-satellite Navigation Equation for GPS Problem
 
 % Hardcode Satellite Values
 xi = [ 15600 18760 17610 19170 ];
