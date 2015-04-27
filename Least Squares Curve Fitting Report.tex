@@ -89,16 +89,16 @@ As can be seen in \cref{fig: fullerror}, the error of the fits decreases as the 
 \centering
 \begin{tabular}{l|rr}
 \multicolumn{1}{l|}{} & \multicolumn{1}{c}{log(RMSE)} & \multicolumn{1}{c}{log(Max Absolute Error)} \\ \hline
-$P_1$                  & -3.346804                     & -2.757447                                  \\
-$P_2$                  & -5.639929                     & -5.060017                                   \\
-$P_3$                  & -6.896321                     & -6.717131                                   \\
-$P_4$                  & -10.759990                    & -9.974002                                    \\
-$P_5$                  & -11.051908                    & -10.633327                                  \\
-$P_6$                  & -14.866742                    & -14.178272                                  \\
-$P_7$                  & -15.859004                    & -15.455704                                 \\
-$P_8$                  & -19.275090                    & -18.750739                                \\
-$P_9$                  & -21.709429                    & -21.044448                                 \\
-$P_{10}$                 & -36.385632                    & -35.638188                                
+$P_1$                  & -3.4783                     & -2.7574                                  \\
+$P_2$                  & -5.7754                     & -5.0600                                   \\
+$P_3$                  & -6.9864                     & -6.5686                                   \\
+$P_4$                  & -10.7137                    & -9.8465                                    \\
+$P_5$                  & -10.9621                    & -10.3492                                  \\
+$P_6$                  & -14.5498                    & -13.4399                                  \\
+$P_7$                  & -15.2587                    & -14.2548                                 \\
+$P_8$                  & -18.0025                    & -16.6762                                \\
+$P_9$                  & -19.2864                    & -17.9890                                 \\
+$P_{10}$                 & -21.3235                    & -19.9477                                
 \end{tabular}
 \caption{Full Polynomial Fit Errors}
 \label{table: fullerrors}
@@ -130,11 +130,11 @@ It can be seen that the errors of the purely odd polynomials are unexpectedly la
 \centering
 \begin{tabular}{l|rr}
      & \multicolumn{1}{c}{log(RMSE)} & \multicolumn{1}{c}{log(Max Absolute Error)} \\ \hline
-$O_1$ & -3.096117             & -2.450822                           \\
-$O_3$ & -5.678632            & -5.216506                           \\
-$O_5$ & -8.521136            & -7.961519                           \\
-$O_7$ & -11.631001           & -11.125641                          \\
-$O_9$ & -15.013494             & -14.422444                          
+$O_1$ & -3.4783             & -2.7574                           \\
+$O_3$ & -5.7754            & -5.0600                           \\
+$O_5$ & -6.9864           & -6.5686                           \\
+$O_7$ & -10.7137           & -9.8465                          \\
+$O_9$ & -10.9621             & -10.3492                          
 \end{tabular}
 \caption{Odd Polynomial Fit Errors}
 \label{table: odderrors}
@@ -149,10 +149,10 @@ In search of a function that better fits the error function, it is necessary to 
 Of all elementary functions, the only nicely-behaved function that has a horizontal asymptote is the exponential decay. The exponential decay has a horizontal asymptote at $0$, although that can be changed to a constant by simply adding the constant as another term in the model. The problem arises that the rest of the exponential does not have the behavior that we see in the error function. We can solve this issue by using the product of the exponential decay and another function, which can also have a horizontal asymptote as the exponential term usually has more effect than other terms. The model that was chosen for this report is the following
 
 \begin{equation}
-c_1 + e^{-t^2} \left( c_2 + c_3 x + c_4 x^2 + c_5 x^3 \right)
+c_1 + e^{-t^2} \left( c_2 + c_3 z + c_4 z^2 + c_5 z^3 \right)
 \label{eqn: exponential model}
 \end{equation}
-where $x = \left( 1 + t \right)^{-1}$.
+where $z = \left( 1 + t \right)^{-1}$.
 
 \begin{figure}[H]
 \includegraphics[width=\linewidth]{Figures/experror.eps}
@@ -162,7 +162,7 @@ where $x = \left( 1 + t \right)^{-1}$.
 
 Plotted in \cref{fig: experrors} is the logarithm of the absolute error of the exponential fit to the error function. This is due to the asymptotic nature of the error function and the exponential; as $x$ increases, the error will decrease, with the hope that the error quickly becomes close to 0.
 
-In addition, with this model, we found  the $\text{RMSE} \approx 0.076750$ and $\log{(\text{RMSE})} \approx -2.567242$. This model also resulted in a max absolute error of 0.170964 with a logarithm of -1.766301. Compared to the polynomials, these error values aren't great in the region of interest. However, the main feature of this model is the horizontal asymtote, which is important in the limits of the error function.
+In addition, with this model, we found  the $\text{RMSE} \approx 0.0015$ and $\log{(\text{RMSE})} \approx -5.9549$. This model also resulted in a max absolute error of 0.0026 with a logarithm of -5.9549. Compared to the polynomials, these error values aren't great in the region of interest. However, the main feature of this model is the horizontal asymtote, which is important in the limits of the error function.
 
 Additional improvements may be made by fitting a nonlinear model, resulting in parameters in places such as exponents.
 
@@ -225,13 +225,14 @@ As seen in the following plot, this would indicate that the transmitter is on th
 \label{fig: 6satgps}
 \end{figure}
 
-The results shown in \cref{fig: 6satgps} is quite interesting as one would think that increasing the number of satellites would increase the accuracy of the measurement. This is in fact not the case since a least-squares result must be used. One suspected issue is the parameter $d$, which was found to be 0 in both the four and six-satellite cases. If $d$ were actually another number, it may be the case that both systems agree.
+The results shown in \cref{fig: 6satgps} is quite interesting as one would think that increasing the number of satellites would increase the accuracy of the measurement. This is in fact not the case since a least-squares result must be used. The reason for the error is inconsistent data from the satellites. The difference in $\Delta t$ between the satellites may be small, but it is large when the used with distance units $c \Delta t$. This combined with the close grouping of the satellites leads to issues with the solution of the system.
 
 \newpage
 
 \section*{Source Code Listing}
 
 In addition to the following source code listings, the newest versions of the code may be found at \url{https://github.com/danielunderwood/least-squares-curve-fitting} and the latest compiled version of this report may be found at \url{https://www.sharelatex.com/github/repos/danielunderwood/least-squares-curve-fitting/builds/latest/output.pdf}.
+\lstinputlisting[language=Matlab, caption=erfFitting.m]{erfFitting.m}
 \lstinputlisting[language=Matlab, caption=linlsqfit.m]{linlsqfit.m}
 \lstinputlisting[language=Matlab, caption=splitfunction.m]{splitfunction.m}
 \lstinputlisting[language=Matlab, caption=navigationequation4.m]{navigationequation4.m}

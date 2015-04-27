@@ -1,15 +1,16 @@
-function [ fitParams, fittedPoints, rmse, pointerrors ] = ...
-    linlsqfit(x, y, modelfun)
+function [ fitParams ] = linlsqfit(x, y, modelfun)
 %linlsqfit Fits data to a model function with linear parameters
 
-% TODO: Check that x and y are column vectors of the same size
+% Make x and y column vectors
+x = x(:);
+y = y(:);
 
 % Split modelfun into terms
 funcTerms = splitfunction(modelfun);
 
 % Get number of terms and points
-numTerms = size(funcTerms, 2);
-numPoints = size(x, 1);
+numTerms = numel(funcTerms);
+numPoints = numel(x);
 
 % Preallocate A
 A = zeros(numPoints, numTerms);
@@ -23,12 +24,5 @@ end
 
 % Solve for fit parameters
 fitParams = A \ y;
-
-fittedPoints = A * fitParams;
-
-% Check fitted model to get errors
-pointerrors = y - fittedPoints;
-
-rmse = rms(pointerrors);
 end
 
