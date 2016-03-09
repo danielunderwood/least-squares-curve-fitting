@@ -1,5 +1,8 @@
-# least-squares-curve-fitting
-##Curve fitting with linear and nonlinear least squares for Spring 2015 MA 428 Project 2
+# Least Squares Curve Fitting
+
+__NOTE:__ This repository contains code for data analysis and thus is poorly structured as it is not meant to be continually supported or updated.
+
+Curve fitting with linear and nonlinear least squares for Spring 2015 MA 428 Project 2
 
 ### Current Build Status
 [![PDF Status](https://www.sharelatex.com/github/repos/danielunderwood/least-squares-curve-fitting/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/danielunderwood/least-squares-curve-fitting/builds/latest/output.pdf)
